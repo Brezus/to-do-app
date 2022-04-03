@@ -109,7 +109,7 @@ main {
   letter-spacing: 5px;
   text-transform: uppercase;
 }
-.completed {
+p.completed {
   color: var(--Very-Dark-Grayish-Blue);
   opacity: 0.5;
   text-decoration: line-through;
