@@ -19,10 +19,6 @@
   --fs: 1.125rem;
 }
 
-.over {
-  border: 3px dotted #666;
-  background-color: rgba(0, 0, 0, 0.226);
-}
 #circle-check,
 .circle-check {
   height: 20px;
@@ -248,7 +244,12 @@ main {
   display: flex;
   align-items: center;
 }
-
+.over {
+  border: 3px dotted #666;
+}
+body.dark .over {
+  border: 3px dotted rgb(235, 235, 235);
+}
 .task {
   margin-right: auto;
 }
