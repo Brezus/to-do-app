@@ -1,0 +1,318 @@
+:root {
+  --Bright-Blue: hsl(220, 98%, 61%);
+  --Check-Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+  --Very-Light-Gray: hsl(0, 0%, 98%);
+  --Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+  --Light-Grayish-Blue: hsl(233, 11%, 84%);
+  --Dark-Grayish-Blue: hsl(236, 9%, 61%);
+  --Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+  --Very-Dark-Blue: hsl(235, 21%, 11%);
+  --Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+  --Light-Grayish-Blue: hsl(234, 39%, 85%);
+  --Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
+  --Dark-Grayish-Blue: hsl(234, 11%, 52%);
+  --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+  --Even-Darker-Grayish-Blue: hsl(237, 14%, 26%);
+  --ff: "Josefin Sans", sans-serif;
+  --fws: 400;
+  --fwl: 700;
+  --fs: 1.125rem;
+}
+
+.over {
+  border: 3px dotted #666;
+  background-color: rgba(0, 0, 0, 0.226);
+}
+#circle-check,
+.circle-check {
+  height: 20px;
+  min-width: 20px;
+  border-radius: 10px;
+  border: 1px solid var(--Dark-Grayish-Blue);
+  background-color: transparent;
+  margin-right: 15px;
+}
+.circle-check.completed {
+  background: linear-gradient(to left, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  border: none;
+  position: relative;
+}
+.circle-check.completed::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  width: 50%;
+  background: url("../images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#remove {
+  height: 15px;
+  object-fit: contain;
+}
+#remove,
+.circle-check {
+  cursor: pointer;
+}
+
+body {
+  background-image: url("../images/bg-mobile-light.jpg"),
+    linear-gradient(to left, var(--Very-Light-Grayish-Blue), white);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+body.dark {
+  /* --Check-Background: linear-gradient var(--Very-Dark-Desaturated-Blue) to
+    var(--Very-Dark-Blue); */
+  background-image: url("../images/bg-mobile-dark.jpg"),
+    linear-gradient(to left, var(--Very-Dark-Blue), var(--Very-Dark-Blue));
+  /* color: var(--Very-Light-Grayish-Blue); */
+  color: white;
+}
+body.dark .input-wrapper,
+body.dark .user-input-wrapper,
+body.dark .actions-cont,
+body.dark .actions {
+  background-color: var(--Very-Dark-Desaturated-Blue);
+  color: white;
+}
+body.dark .user-input-wrapper,
+body.dark .actions-cont,
+body.dark .input-wrapper {
+  border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
+}
+body.dark #enter-task,
+body.dark #actions-cont {
+  color: white;
+}
+body.dark a,
+body.dark p {
+  color: white;
+}
+body.dark a.active {
+  color: var(--Bright-Blue);
+}
+
+/*============typography============ */
+main {
+  color: var(--Very-Dark-Grayish-Blue);
+  font-family: var(--ff);
+  font-size: clamp(0.9rem, 4vw, 1rem);
+}
+.logo {
+  color: var(--Very-Light-Gray);
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.completed {
+  color: var(--Very-Dark-Grayish-Blue);
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+.theme-switcher-cont {
+  position: relative;
+  height: 20px;
+  width: 20px;
+}
+.theme-switcher {
+  object-fit: contain;
+  height: 100%;
+  cursor: pointer;
+  /* position: absolute;
+  z-index: 2; */
+}
+
+.actions-cont a,
+.actions__link a {
+  text-decoration: none;
+  font-family: var(--ff);
+  /* color: var(--Very-Dark-Blue); */
+}
+.actions-cont a,
+.actions-cont p,
+.actions__link a {
+  color: var(--Very-Dark-Grayish-Blue);
+  opacity: 0.5;
+}
+.actions-cont a,
+.actions-cont p {
+  font-size: 0.9rem;
+}
+.actions__link a {
+  font-size: 1rem;
+  font-weight: var(--fwl);
+}
+.actions__link a.active {
+  /* color: var(--Bright-Blue); */
+  color: blue;
+}
+.typing {
+  font-size: 0.8rem;
+  color: var(--Dark-Grayish-Blue);
+}
+/*============layout============ */
+section,
+footer {
+  /* padding-inline: 2rem; */
+  width: 90%;
+  max-width: 550px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3em;
+}
+
+main {
+  padding-top: 2rem;
+}
+/* input field  */
+#enter-task {
+  border: none;
+  width: 100%;
+  color: var(--Very-Dark-Grayish-Blue);
+  font-family: inherit;
+  transition: margin 0.3s linear;
+  z-index: 2;
+  background: transparent;
+  /* z index added here and on typing class so user can click without problem */
+}
+#enter-task:focus-within {
+  outline: none;
+}
+.typing {
+  position: absolute;
+  left: 65px;
+  width: 175px;
+  opacity: 0;
+  z-index: 1;
+}
+.typing-animation {
+  animation: blink 3s linear infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.input-wrapper,
+.user-input-wrapper,
+.actions-cont,
+.actions {
+  padding: 0.7em 2em;
+  position: relative;
+}
+
+.task {
+  inline-size: 80%;
+  overflow-wrap: break-word;
+}
+.input-wrapper {
+  margin-bottom: 1em;
+}
+.tasks-cont,
+.input-wrapper,
+.actions {
+  border-radius: 5px;
+  /* overflow: hidden; */
+  background-color: white;
+}
+.tasks-cont {
+  margin-bottom: 0em;
+}
+.user-input-wrapper {
+  cursor: pointer;
+  user-select: none;
+  justify-content: space-between;
+}
+
+.user-input-wrapper,
+.actions-cont,
+.input-wrapper {
+  border-bottom: 1.5px solid var(--Very-Light-Grayish-Blue);
+  display: flex;
+  align-items: center;
+}
+
+.task {
+  margin-right: auto;
+}
+
+.actions-cont {
+  justify-content: space-between;
+  color: var(--Dark-Grayish-Blue);
+  background-color: white;
+  flex-direction: row-reverse;
+}
+.actions,
+#actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  padding-left: 0;
+  margin-inline: auto;
+}
+#actions {
+  display: none;
+  margin: 0;
+}
+small {
+  opacity: 0.5;
+  text-align: center;
+  display: block;
+  margin-right: 2rem;
+}
+footer {
+  margin-top: 6rem;
+}
+@media (min-width: 550px) {
+  body {
+    background-image: url("../images/bg-desktop-light.jpg"),
+      linear-gradient(to left, var(--Very-Light-Grayish-Blue), white);
+  }
+
+  body.dark {
+    /* --Check-Background: linear-gradient var(--Very-Dark-Desaturated-Blue) to
+      var(--Very-Dark-Blue); */
+    background-image: url("../images/bg-desktop-dark.jpg"),
+      linear-gradient(to left, var(--Very-Dark-Blue), var(--Very-Dark-Blue));
+    /* color: var(--Very-Light-Grayish-Blue); */
+    color: white;
+  }
+
+  .input-wrapper,
+  .user-input-wrapper,
+  .actions-cont,
+  .actions {
+    padding: 1em 2em;
+    position: relative;
+  }
+  #actions {
+    display: flex;
+  }
+  .actions {
+    display: none;
+  }
+  .actions-cont {
+    margin-bottom: 2em;
+  }
+  footer {
+    margin-top: 2em;
+  }
+}

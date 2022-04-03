@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css" />
+  <link rel="stylesheet" href="./src/styles.css">
+  <script defer src="./src/index.js"></script>
+  
+  <title>Frontend Mentor | Todo app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; margin-right: 2rem;  }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section>
+      <nav>
+        <h1 class="logo">Todo</h1>
+        <div class="theme-switcher-cont">
+          <img class="theme-switcher" src="./images/icon-moon.svg"></img>
+        </div>
+      </nav>
+
+      <article>
+        <div class="input-wrapper">
+          <button id="circle-check"></button>
+          <p class="typing">Currently typing...</p>
+          <input id="enter-task" type="text" placeholder="Create a new todo...">
+        </div>
+  
+        <div class="tasks-cont">
+          <div class="user-input-wrapper" draggable="true">
+            <button class="circle-check"></button>
+            <p class="task">Watch one piece</p>
+            <img id="remove" src="./images/icon-cross.svg" alt="close">
+          </div>
+          <div class="user-input-wrapper" draggable="true">
+            <button class="circle-check"></button>
+            <p class="task">go for a jog</p>
+            <img id="remove" src="./images/icon-cross.svg" alt="close">
+          </div>
+          <div class="user-input-wrapper" draggable="true">
+            <button class="circle-check"></button>
+            <p class="task">Procrastinate</p>
+            <img id="remove" src="./images/icon-cross.svg" alt="close">
+          </div>
+            
+        </div>
+        <div class="actions-cont" >
+          <a href="#" id="clear">Clear Completed</a> 
+          <ul id="actions">
+            <li class="actions__link"><a href="#" class="actions__link-a">All</a> </li>
+            <li class="actions__link"><a href="#" class="actions__link-a">Active</a> </li>
+            <li class="actions__link"><a href="#" class="actions__link-a">Completed</a> </li>
+          </ul>
+          <p><span id="items-left"></span> items left</p>
+        </div>
+          <ul class="actions">
+            <li class="actions__link"><a href="#" class="actions__link-a">All</a> </li>
+            <li class="actions__link"><a href="#" class="actions__link-a">Active</a> </li>
+            <li class="actions__link"><a href="#" class="actions__link-a">Completed</a> </li>
+          </ul>
+        <small id="enabledragdrop">Drag and drop to reorder list</small>
+      </article>
+    </section>
+  <footer>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="https://www.frontendmentor.io/profile/Brezus" target="_blank">Millz</a>.
+    </div>
+  </footer>
+  </main>
+</body>
+</html>
