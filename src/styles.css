@@ -312,6 +312,13 @@ footer {
   .actions-cont {
     margin-bottom: 2em;
   }
+  .user-input-wrapper:hover #remove {
+    opacity: 1;
+  }
+  #remove {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
   footer {
     margin-top: 2em;
   }
