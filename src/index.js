@@ -118,10 +118,14 @@ tasksWrapper.addEventListener("click", (e) => {
   if (!target) return;
   target.nextElementSibling.classList.toggle("completed");
   target.classList.toggle("completed");
-  if (target.classList.contains("completed")) {
-    updateItemsLeft(tasksWrapper.childElementCount - myInt);
-    myInt += 1;
-  }
+  //   if (target.classList.contains("completed")) {
+  //     myInt += 1;
+  //     updateItemsLeft(tasksWrapper.childElementCount - myInt);
+  //   } else {
+  //     myInt -= 1;
+  //     updateItemsLeft(tasksWrapper.childElementCount + myInt);
+  //   }
+  //   console.log(myInt);
 });
 
 // this makes it so when the x is clicked then the entire task body gets removed
