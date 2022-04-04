@@ -13,7 +13,7 @@ const themeSwitherCont = document.querySelector(".theme-switcher-cont");
 let items = document.querySelectorAll(".user-input-wrapper");
 let themeSwitched = false;
 
-itemsLeft.innerHTML = 3;
+itemsLeft.innerText = "3 items left";
 
 function removeActiveClassOnActions() {
   userActions.forEach((userAction) => {
@@ -58,8 +58,6 @@ function showCompletedActiveTasks(e) {
   } else if (target.textContent === "Active") {
     toggleBtns.forEach((btn) => {
       if (!btn.classList.contains("completed")) {
-        console.log(btn);
-
         btn.parentElement.style.display = "flex";
       } else {
         btn.parentElement.style.display = "none";
@@ -79,13 +77,20 @@ clearItems.addEventListener("click", () => {
   toggleBtns.forEach((btn) => {
     if (btn.className === "circle-check completed") {
       btn.parentElement.remove();
-      updateItemsLeft();
+      updateItemsLeft(tasksWrapper.childElementCount);
     } else return;
   });
 });
 
-function updateItemsLeft() {
-  itemsLeft.innerHTML = tasksWrapper.childElementCount;
+function updateItemsLeft(elCount) {
+  itemsLeft.innerText =
+    elCount <= 0
+      ? "no items left"
+      : elCount <= 1
+      ? "one item left"
+      : `${elCount} items left`;
+  //   itemsLeft.innerText = tasksWrapper.childElementCount;
+  console.log(itemsLeft.innerText);
 }
 
 let newTask;
@@ -107,11 +112,16 @@ window.addEventListener("click", (e) => {
 inputField.addEventListener("keydown", getTaskInput);
 
 // adds the line through when circle button beside task is clicked
+let myInt = 1;
 tasksWrapper.addEventListener("click", (e) => {
   let target = e.target.closest("button");
   if (!target) return;
   target.nextElementSibling.classList.toggle("completed");
   target.classList.toggle("completed");
+  if (target.classList.contains("completed")) {
+    updateItemsLeft(tasksWrapper.childElementCount - myInt);
+    myInt += 1;
+  }
 });
 
 // this makes it so when the x is clicked then the entire task body gets removed
@@ -119,7 +129,7 @@ tasksWrapper.addEventListener("click", (e) => {
   let target = e.target.closest("img");
   if (!target) return;
   target.parentElement.remove();
-  updateItemsLeft();
+  updateItemsLeft(tasksWrapper.childElementCount);
 });
 
 // this function is in charge of getting the task the user typed in and passing it to other functions
@@ -140,7 +150,7 @@ function getTaskInput(e) {
 
 function addTask(taskData) {
   tasksWrapper.prepend(returnTaskHtml(taskData));
-  updateItemsLeft();
+  updateItemsLeft(tasksWrapper.childElementCount);
 }
 
 function returnTaskHtml(taskData) {
