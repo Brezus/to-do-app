@@ -64,7 +64,11 @@ body.dark {
   /* --Check-Background: linear-gradient var(--Very-Dark-Desaturated-Blue) to
     var(--Very-Dark-Blue); */
   background-image: url("../images/bg-mobile-dark.jpg"),
-    linear-gradient(to left, var(--Very-Dark-Blue), var(--Very-Dark-Blue));
+    linear-gradient(
+      to left,
+      var(--Very-Dark-Blue),
+      var(--Very-Dark-Desaturated-Blue)
+    );
   /* color: var(--Very-Light-Grayish-Blue); */
   color: white;
 }
@@ -75,10 +79,14 @@ body.dark .actions {
   background-color: var(--Very-Dark-Desaturated-Blue);
   color: white;
 }
+
 body.dark .user-input-wrapper,
 body.dark .actions-cont,
 body.dark .input-wrapper {
   border-bottom: 1px solid var(--Very-Dark-Grayish-Blue);
+}
+body.dark .input-wrapper {
+  border-bottom: none;
 }
 body.dark #enter-task,
 body.dark #actions-cont {
@@ -90,6 +98,20 @@ body.dark p {
 }
 body.dark a.active {
   color: var(--Bright-Blue);
+}
+body.dark .tasks-cont {
+  overflow: hidden;
+  background-color: transparent;
+}
+body.dark .actions-cont {
+  border-bottom: none;
+}
+body.dark .tasks-cont,
+body.dark .actions-cont {
+  box-shadow: rgba(27, 30, 92, 0.3) 0px 18px 50px -10px;
+}
+body.dark .input-wrapper {
+  box-shadow: rgba(27, 30, 92, 0.3) 0px 7px 29px 0px;
 }
 
 /*============typography============ */
@@ -229,6 +251,10 @@ main {
   background-color: white;
 }
 .tasks-cont {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.tasks-cont {
   margin-bottom: 0em;
 }
 .user-input-wrapper {
@@ -243,6 +269,13 @@ main {
   border-bottom: 1.5px solid var(--Very-Light-Grayish-Blue);
   display: flex;
   align-items: center;
+}
+.input-wrapper {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.tasks-cont,
+.actions-cont {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
 }
 .over {
   border: 3px dotted #666;
@@ -259,6 +292,8 @@ body.dark .over {
   color: var(--Dark-Grayish-Blue);
   background-color: white;
   flex-direction: row-reverse;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .actions,
 #actions {
@@ -312,6 +347,8 @@ footer {
   }
   .actions-cont {
     margin-bottom: 2em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
   }
   .user-input-wrapper:hover #remove {
     opacity: 1;
